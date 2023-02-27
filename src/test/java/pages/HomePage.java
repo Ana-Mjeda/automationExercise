@@ -1,5 +1,6 @@
 package pages;
 
+import io.github.bonigarcia.wdm.managers.VoidDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +17,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a")
     private WebElement deleteButton;
 
+    @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a")
+    private WebElement logoutButton;
+
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
@@ -30,5 +34,8 @@ public class HomePage extends BasePage {
 
     public void clickDeleteButton() {
         deleteButton.click();
+    }
+    public void clickLogoutButton(){
+        logoutButton.click();
     }
 }

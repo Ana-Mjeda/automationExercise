@@ -1,5 +1,6 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -7,7 +8,7 @@ import org.testng.annotations.Test;
 import pages.*;
 import utils.FakerUtil;
 
-public class TC1RegisterUser extends BaseTests {
+public class TC2LoginUserWithCorrectEmailAndPassword extends BaseTests {
 
     private HomePage homePage;
 
@@ -16,8 +17,6 @@ public class TC1RegisterUser extends BaseTests {
     private SignUpPage signUpPage;
 
     private AccountCreatedPage accountCreatedPage;
-
-    private AccountDeletedPage accountDeletedPage;
 
     String name = FakerUtil.name();
 
@@ -47,40 +46,11 @@ public class TC1RegisterUser extends BaseTests {
         loginPage = new LoginPage(driver, driverWait);
         signUpPage = new SignUpPage(driver, driverWait);
         accountCreatedPage = new AccountCreatedPage(driver, driverWait);
-        accountDeletedPage = new AccountDeletedPage(driver, driverWait);
     }
 
     public void scroll() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,250)", "");
-    }
-
-    @Test
-    public void registerUser() {
-
-        Assert.assertTrue(driver.getCurrentUrl().contains(baseURL));
-        homePage.clickSignUpButton();
-
-        loginPage.waitForLoginUrl();
-        Assert.assertEquals(loginPage.getNewUserSignupText().getText(), "New User Signup!");
-        loginPage.fillSignUpForm(name, email);
-        signUpPage.waitForSignUpUrl();
-
-        scroll();
-        Assert.assertEquals(signUpPage.getEnterAccountText().getText(), "ENTER ACCOUNT INFORMATION");
-        signUpPage.fillSignUpForm(Title.MRS, password, "27", "March", "2001");
-        signUpPage.clickNewsletter();
-        signUpPage.clickSpecialOffers();
-        signUpPage.fillAddressInformation(name, lastName, address, country, state, city, zipcode, number);
-
-        Assert.assertEquals(accountCreatedPage.getAccountCreated().getText(), "ACCOUNT CREATED!");
-        accountCreatedPage.clickContinueButton();
-        driver.navigate().refresh();
-        accountCreatedPage.clickContinueButton();
-        Assert.assertEquals(homePage.getLoggedInAs().getText(), "Logged in as " + name);
-
-        homePage.clickDeleteButton();
-        Assert.assertEquals(accountDeletedPage.getAccountDeleted().getText(), "ACCOUNT DELETED!");
     }
 
     @Test
@@ -101,6 +71,5 @@ public class TC1RegisterUser extends BaseTests {
         homePage.clickLogoutButton();
 
         loginPage.fillLoginForm(email, password);
-
     }
 }

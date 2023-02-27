@@ -30,8 +30,8 @@ public class BaseTests {
         driver.get(baseURL);
     }
 
-    @AfterClass
-    public void afterClass() {
-        driver.quit();
-    }
+//    @AfterClass
+//    public void afterClass() {
+//        driver.quit();
+//    }
 }
