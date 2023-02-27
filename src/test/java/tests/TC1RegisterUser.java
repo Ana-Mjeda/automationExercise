@@ -55,7 +55,7 @@ public class TC1RegisterUser extends BaseTests {
     @Test
     public void registerUser() {
 
-        //Assert.assertEquals(driver.getCurrentUrl(), baseURL);
+        Assert.assertTrue(driver.getCurrentUrl().contains(baseURL));
         homePage.clickSignUpButton();
 
         loginPage.waitForLoginUrl();
@@ -73,7 +73,8 @@ public class TC1RegisterUser extends BaseTests {
 
         Assert.assertEquals(accountCreatedPage.getAccountCreated().getText(), "ACCOUNT CREATED!");
         accountCreatedPage.clickContinueButton();
-        accountCreatedPage.closeAd(); //cant continue because of an AD
+        driver.navigate().refresh();
+        accountCreatedPage.clickContinueButton();
         Assert.assertEquals(homePage.getLoggedInAs().getText(), "Logged in as " + name);
 
         homePage.clickDeleteButton();

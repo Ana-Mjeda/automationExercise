@@ -7,9 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AccountCreatedPage extends BasePage {
 
-    @FindBy(id = "dismiss-button")
-    private WebElement closeAd;
-
     @FindBy(xpath = "//*[@id=\"form\"]/div/div/div/h2/b")
     private WebElement accountCreated;
 
@@ -26,9 +23,5 @@ public class AccountCreatedPage extends BasePage {
 
     public void clickContinueButton() {
         continueButton.click();
-    }
-
-    public void closeAd() {
-        closeAd.click();
     }
 }

@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[10]/a")
     private WebElement loggedInAs;
 
-    @FindBy(className = "trash")
+    @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a")
     private WebElement deleteButton;
 
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
