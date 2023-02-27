@@ -10,14 +10,6 @@ import utils.FakerUtil;
 
 public class TC2LoginUserWithCorrectEmailAndPassword extends BaseTests {
 
-    private HomePage homePage;
-
-    private LoginPage loginPage;
-
-    private SignUpPage signUpPage;
-
-    private AccountCreatedPage accountCreatedPage;
-
     String name = FakerUtil.name();
 
     String lastName = FakerUtil.lastName();
@@ -38,15 +30,6 @@ public class TC2LoginUserWithCorrectEmailAndPassword extends BaseTests {
 
     private String country = "Australia";
 
-    @BeforeClass
-    @Override
-    public void beforeClass() {
-        super.beforeClass();
-        homePage = new HomePage(driver, driverWait);
-        loginPage = new LoginPage(driver, driverWait);
-        signUpPage = new SignUpPage(driver, driverWait);
-        accountCreatedPage = new AccountCreatedPage(driver, driverWait);
-    }
 
     public void scroll() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -58,9 +41,6 @@ public class TC2LoginUserWithCorrectEmailAndPassword extends BaseTests {
         Assert.assertTrue(driver.getCurrentUrl().contains(baseURL));
         homePage.clickSignUpButton();
 
-        loginPage.waitForLoginUrl();
-        Assert.assertEquals(loginPage.getLoginToYourAccount().getText(), "Login to your account");
-
         loginPage.fillSignUpForm(name, email);
         signUpPage.fillSignUpForm(Title.MRS, password, "27", "March", "2001");
         scroll();
@@ -70,6 +50,12 @@ public class TC2LoginUserWithCorrectEmailAndPassword extends BaseTests {
         accountCreatedPage.clickContinueButton();
         homePage.clickLogoutButton();
 
+        loginPage.waitForLoginUrl();
+        Assert.assertEquals(loginPage.getLoginToYourAccount().getText(), "Login to your account");
         loginPage.fillLoginForm(email, password);
+        Assert.assertEquals(homePage.getLoggedInAs().getText(), "Logged in as " + name);
+
+        homePage.clickDeleteButton();
+        Assert.assertEquals(accountDeletedPage.getAccountDeleted().getText(), "ACCOUNT DELETED!");
     }
 }

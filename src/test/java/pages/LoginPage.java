@@ -20,7 +20,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"form\"]/div/div/div[3]/div/form/input[3]")
     private WebElement email;
 
-    @FindBy(xpath = "//*[text()='Login'] //*[@name='email']")
+    @FindBy(xpath = "//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]")
     private WebElement loginEmail;
 
     @FindBy(name = "password")
