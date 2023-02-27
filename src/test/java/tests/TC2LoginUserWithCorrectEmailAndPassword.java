@@ -1,11 +1,9 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.Title;
 import utils.FakerUtil;
 
 public class TC2LoginUserWithCorrectEmailAndPassword extends BaseTests {
@@ -29,7 +27,6 @@ public class TC2LoginUserWithCorrectEmailAndPassword extends BaseTests {
     String number = FakerUtil.number();
 
     private String country = "Australia";
-
 
     public void scroll() {
         JavascriptExecutor js = (JavascriptExecutor) driver;

@@ -1,6 +1,5 @@
 package pages;
 
-import io.github.bonigarcia.wdm.managers.VoidDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +34,8 @@ public class HomePage extends BasePage {
     public void clickDeleteButton() {
         deleteButton.click();
     }
-    public void clickLogoutButton(){
+
+    public void clickLogoutButton() {
         logoutButton.click();
     }
 }

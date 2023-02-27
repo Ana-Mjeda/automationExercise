@@ -2,25 +2,31 @@ package tests;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.Title;
 import utils.FakerUtil;
 
 public class TC1RegisterUser extends BaseTests {
 
     String name = FakerUtil.name();
+
     String lastName = FakerUtil.lastName();
+
     String address = FakerUtil.address();
+
     String email = FakerUtil.email();
+
     String password = FakerUtil.password();
+
     String city = FakerUtil.city();
+
     String state = FakerUtil.state();
+
     String zipcode = FakerUtil.zipcode();
+
     String number = FakerUtil.number();
 
     private String country = "Australia";
-
 
     public void scroll() {
         JavascriptExecutor js = (JavascriptExecutor) driver;

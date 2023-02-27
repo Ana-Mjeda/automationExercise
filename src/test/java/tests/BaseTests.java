@@ -19,9 +19,13 @@ public class BaseTests {
     protected final String baseURL = "https://automationexercise.com";
 
     protected HomePage homePage;
+
     protected LoginPage loginPage;
+
     protected SignUpPage signUpPage;
+
     protected AccountCreatedPage accountCreatedPage;
+
     protected AccountDeletedPage accountDeletedPage;
 
     @BeforeClass

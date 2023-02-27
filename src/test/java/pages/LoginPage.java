@@ -40,7 +40,7 @@ public class LoginPage extends BasePage {
         return newUserSignupText;
     }
 
-    public WebElement getLoginToYourAccount(){
+    public WebElement getLoginToYourAccount() {
         return loginToYourAccount;
     }
 
